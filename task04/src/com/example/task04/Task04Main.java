@@ -1,6 +1,10 @@
 package com.example.task04;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Scanner;
+import java.util.Locale;
 
 public class Task04Main {
     public static void main(String[] args) throws IOException {
@@ -9,6 +13,17 @@ public class Task04Main {
         // - запустить программу
         // - проверить, что получилось 351.731900
 
-        System.out.println("0.0");
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+        double sum = 0.0;
+
+        while (scanner.hasNext()) {
+            if (scanner.hasNextDouble()) {
+                sum += scanner.nextDouble();
+            } else {
+                scanner.next();
+            }
+        }
+
+        System.out.printf(Locale.US,"%.6f", sum);
     }
 }
