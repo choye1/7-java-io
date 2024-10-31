@@ -1,5 +1,5 @@
 package com.example.task03;
-
+import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
@@ -15,7 +15,23 @@ public class Task03Main {
     }
 
     public static String readAsString(InputStream inputStream, Charset charset) throws IOException {
-        // your implementation here
-        return "";
+
+        if(inputStream == null || charset == null){
+            throw new IllegalArgumentException("Input stream or charset are null");
+        }
+
+        InputStreamReader reader = new InputStreamReader(inputStream, charset);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        int c = reader.read();
+
+        while(c != -1)
+        {
+            stringBuilder.append((char)c);
+            c = reader.read();
+
+        }
+
+        return stringBuilder.toString();
     }
 }
